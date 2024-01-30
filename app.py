@@ -29,4 +29,3 @@ with slt.form("my_form"):
             if subject == True:
                 subjects.append(subject)
         '''
-
