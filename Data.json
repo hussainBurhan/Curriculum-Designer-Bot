@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "type" : "gov",
+      "curriculum" : "SNC",
+      "grade" : "primary",
+      "subject" : "Maths",
+      "topics" : "T1",
+      "activities" : [
+        {
+          "activity_name" : "A1",
+          "activity_link" : "link1",
+          "activity_cost" : [10, 20, 30, 40]
+        },
+        {
+          "activity_name" : "A2",
+          "activity_link" : "link2",
+          "activity_cost" : [10, 20, 30, 40]
+        }
+      ]
+
+    },
+    {
+      "type" : "pvt",
+      "curriculum" : "Federal",
+      "grade" : "primary",
+      "subject" : "Maths",
+      "topics" : "T1",
+      "activities" : [
+        {
+          "activity_name" : "A1",
+          "activity_link" : "link1",
+          "activity_cost" : [10, 20, 30, 40],
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A2",
+          "activity_link" : "link2",
+          "activity_cost" : [10, 20, 30, 40],
+          "activity_duration" : 1
+        }
+      ]
+
+    }
+  ]
+}
