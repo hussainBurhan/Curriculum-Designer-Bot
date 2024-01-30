@@ -3,40 +3,141 @@
     {
       "type" : "gov",
       "curriculum" : "SNC",
-      "grade" : "primary",
+      "grade" : 5,
       "subject" : "Maths",
       "topics" : "T1",
       "activities" : [
         {
           "activity_name" : "A1",
           "activity_link" : "link1",
-          "activity_cost" : [10, 20, 30, 40]
-        },
-        {
-          "activity_name" : "A2",
-          "activity_link" : "link2",
-          "activity_cost" : [10, 20, 30, 40]
-        }
-      ]
-
-    },
-    {
-      "type" : "pvt",
-      "curriculum" : "Federal",
-      "grade" : "primary",
-      "subject" : "Maths",
-      "topics" : "T1",
-      "activities" : [
-        {
-          "activity_name" : "A1",
-          "activity_link" : "link1",
-          "activity_cost" : [10, 20, 30, 40],
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
           "activity_duration" : 1
         },
         {
           "activity_name" : "A2",
           "activity_link" : "link2",
-          "activity_cost" : [10, 20, 30, 40],
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A3",
+          "activity_link" : "link3",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A4",
+          "activity_link" : "link4",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        }
+      ]
+
+    },
+
+    {
+      "type" : "gov",
+      "curriculum" : "SNC",
+      "grade" : 5,
+      "subject" : "Maths",
+      "topics" : "T2",
+      "activities" : [
+        {
+          "activity_name" : "A1",
+          "activity_link" : "link1",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A2",
+          "activity_link" : "link2",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A3",
+          "activity_link" : "link3",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A4",
+          "activity_link" : "link4",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        }
+      ]
+
+    },
+
+
+    {
+      "type" : "pvt",
+      "curriculum" : "Federal",
+      "grade" : 9,
+      "subject" : "Phy",
+      "topics" : "T1",
+      "activities" : [
+        {
+          "activity_name" : "A1",
+          "activity_link" : "link1",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
+          "activity_duration" : 1
+        },
+        {
+          "activity_name" : "A2",
+          "activity_link" : "link2",
+          "activity_cost" : {
+            "10" : 100,
+            "20" : 180,
+            "30" : 250,
+            "40" : 300
+          },
           "activity_duration" : 1
         }
       ]
