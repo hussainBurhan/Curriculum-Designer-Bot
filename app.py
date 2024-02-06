@@ -24,13 +24,19 @@ def get_activity(data, institute_type, curriculum, grade, subject, num_of_studen
             activities = entry.get('activities', [])
             if activities:
                 activity = random.choice(activities)
-                st.write(f"Activity Name: {activity.get('activity_name', '')}")
-                st.write(f"Activity Cost: {activity['activity_cost'].get(num_of_students, 0)}")
-                st.write(f"Activity Duration: {activity.get('activity_duration', 0)} session")
+                activity_name = activity.get('activity_name', '')
+
+                activity_cost = activity.get('activity_cost', {}).get(str(num_of_students), 0)
+                activity_duration = activity.get('activity_duration', 0)
+
+                st.write(f"Activity Name: {activity_name}")
+                st.write(f"Activity Cost: {activity_cost}")
+                st.write(f"Activity Duration: {activity_duration} session")
                 st.write(f"Manual Link: {activity.get('activity_link', '')}")
                 st.write("\n")
-                total_cost += activity['activity_cost'].get(num_of_students, 0)
-                total_duration += activity.get('activity_duration', 0)
+
+                total_cost += activity_cost
+                total_duration += activity_duration
 
     return total_cost, total_duration
 
