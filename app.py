@@ -6,23 +6,33 @@ def load_data(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
 
+
 def get_activity(data, institute_type, curriculum, grade, subject, num_of_students):
     total_cost = 0
     total_duration = 0
 
-    for entry in data['data']:
-        if (entry['type'] == institute_type) and (entry['curriculum'] == curriculum) and (entry['grade'] == grade) and (entry['subject'] == subject):
-            st.subheader(f'Topic {entry["topics"]}')
-            activity = random.choice(entry['activities'])
-            st.write(f"Activity Name: {activity['activity_name']}")
-            st.write(f"Activity Cost: {activity['activity_cost'][num_of_students]}")
-            st.write(f"Activity Duration: {activity['activity_duration']} session")
-            st.write(f"Manual Link: {activity['activity_link']}")
-            st.write("\n")
-            total_cost += activity['activity_cost'][num_of_students]
-            total_duration += activity['activity_duration']
+    for entry in data.get('data', []):
+        entry_type = entry.get('type')
+        entry_curriculum = entry.get('curriculum')
+        entry_grade = entry.get('grade')
+        entry_subject = entry.get('subject')
+
+        if entry_type == institute_type and entry_curriculum == curriculum and entry_grade == grade and entry_subject == subject:
+            st.subheader(f'Topic {entry.get("topics", "")}')
+
+            activities = entry.get('activities', [])
+            if activities:
+                activity = random.choice(activities)
+                st.write(f"Activity Name: {activity.get('activity_name', '')}")
+                st.write(f"Activity Cost: {activity['activity_cost'].get(num_of_students, 0)}")
+                st.write(f"Activity Duration: {activity.get('activity_duration', 0)} session")
+                st.write(f"Manual Link: {activity.get('activity_link', '')}")
+                st.write("\n")
+                total_cost += activity['activity_cost'].get(num_of_students, 0)
+                total_duration += activity.get('activity_duration', 0)
 
     return total_cost, total_duration
+
 
 def main():
     st.title("STEM Curriculum Designer App")
