@@ -5,8 +5,6 @@ import random
 def load_data(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
-
-
 def get_activity(data, institute_type, curriculum, grade, subject, num_of_students):
     total_cost = 0
     total_duration = 0
@@ -42,9 +40,11 @@ def main():
 
     institute_type = st.sidebar.selectbox("Select Institute Type:", ['gov', 'pvt'])
     curriculum = st.sidebar.selectbox("Select Curriculum:", ['SNC', 'Federal'])
-    grade = st.sidebar.selectbox("Select Grade:", [5, 9])
     subject = st.sidebar.selectbox("Select Subject:", ['Maths', 'Phy'])
-    num_of_students = st.sidebar.number_input("Number of Students:", min_value=1, value=10)
+
+    # Add sliders for grades and number of students
+    grade = st.sidebar.slider("Select Grade:", min_value=5, max_value=9, step=1, value=5)
+    num_of_students = st.sidebar.slider("Number of Students:", options=[10, 20, 30, 40], value=10)
 
     submitted = st.button("Submit")
 
@@ -56,6 +56,6 @@ def main():
         st.write(f"Total Cost: {total_cost}")
         st.write(f"Total Duration: {total_duration}")
 
+
 if __name__ == "__main__":
     main()
-
