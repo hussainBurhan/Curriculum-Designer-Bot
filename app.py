@@ -36,12 +36,16 @@ def main():
     subject = st.sidebar.selectbox("Select Subject:", ['Maths', 'Phy'])
     num_of_students = st.sidebar.number_input("Number of Students:", min_value=1, value=10)
 
-    st.subheader(f'Grade {grade}\n')
+    submitted = st.button("Submit")
 
-    total_cost, total_duration = get_activity(data, institute_type, curriculum, grade, subject, num_of_students)
+    if submitted:
+        st.subheader(f'Grade {grade}\n')
 
-    st.write(f"Total Cost: {total_cost}")
-    st.write(f"Total Duration: {total_duration}")
+        total_cost, total_duration = get_activity(data, institute_type, curriculum, grade, subject, num_of_students)
+
+        st.write(f"Total Cost: {total_cost}")
+        st.write(f"Total Duration: {total_duration}")
 
 if __name__ == "__main__":
     main()
+
