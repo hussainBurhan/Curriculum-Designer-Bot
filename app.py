@@ -2,9 +2,12 @@ import streamlit as st
 import json
 import random
 
+
 def load_data(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
+
+
 def get_activity(data, institute_type, curriculum, grade, subject, num_of_students):
     total_cost = 0
     total_duration = 0
