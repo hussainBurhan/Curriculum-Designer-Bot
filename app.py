@@ -1,31 +1,47 @@
-import streamlit as slt
+import streamlit as st
+import json
+import random
 
+def load_data(file_path):
+    with open(file_path, 'r') as f:
+        return json.load(f)
 
-slt.title("Curriculum Designer Bot")
-with slt.form("my_form"):
-    slt.write("What type of institute are you?")
-    gov = slt.checkbox("Government")
-    pvt = slt.checkbox("Private")
+def get_activity(data, institute_type, curriculum, grade, subject, num_of_students):
+    total_cost = 0
+    total_duration = 0
 
-    slt.write("Which curriculum you want to follow?")
-    curriculum1 = slt.checkbox("C1")
-    curriculum2 = slt.checkbox("C2")
-    curriculum3 = slt.checkbox("C3")
+    for entry in data['data']:
+        if (entry['type'] == institute_type) and (entry['curriculum'] == curriculum) and (entry['grade'] == grade) and (entry['subject'] == subject):
+            st.subheader(f'Topic {entry["topics"]}')
+            activity = random.choice(entry['activities'])
+            st.write(f"Activity Name: {activity['activity_name']}")
+            st.write(f"Activity Cost: {activity['activity_cost'][num_of_students]}")
+            st.write(f"Activity Duration: {activity['activity_duration']} session")
+            st.write(f"Manual Link: {activity['activity_link']}")
+            st.write("\n")
+            total_cost += activity['activity_cost'][num_of_students]
+            total_duration += activity['activity_duration']
 
-    slt.write("Which grade do you want to target?")
-    grade = slt.slider("Grade", 3, 9)
+    return total_cost, total_duration
 
-    slt.write("Which Subjects do you want to cater?")
-    subject1 = slt.checkbox("Sub 1")
-    subject2 = slt.checkbox("Sub 2")
-    subject3 = slt.checkbox("Sub 3")
+def main():
+    st.title("STEM Curriculum Designer App")
 
-    submitted = slt.form_submit_button("Submit")
-    if submitted:
-        slt.header(subject1)
-        '''
-        subjects = []
-        for subject in [subject1, subject2, subject3]:
-            if subject == True:
-                subjects.append(subject)
-        '''
+    file_path = 'Data.json'
+    data = load_data(file_path)
+
+    institute_type = st.sidebar.selectbox("Select Institute Type:", ['gov', 'pvt'])
+    curriculum = st.sidebar.selectbox("Select Curriculum:", ['SNC', 'Federal'])
+    grade = st.sidebar.selectbox("Select Grade:", [5, 9])
+    subject = st.sidebar.selectbox("Select Subject:", ['Maths', 'Phy'])
+    num_of_students = st.sidebar.number_input("Number of Students:", min_value=1, value=10)
+
+    st.subheader(f'Grade {grade}\n')
+
+    total_cost, total_duration = get_activity(data, institute_type, curriculum, grade, subject, num_of_students)
+
+    st.write(f"Total Cost: {total_cost}")
+    st.write(f"Total Duration: {total_duration}")
+
+if __name__ == "__main__":
+    main()
