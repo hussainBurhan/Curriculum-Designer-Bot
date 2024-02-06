@@ -45,9 +45,9 @@ def main():
     curriculum = st.sidebar.selectbox("Select Curriculum:", ['SNC', 'Federal'])
     subject = st.sidebar.selectbox("Select Subject:", ['Maths', 'Phy'])
 
-    # Add sliders for grades and number of students
+    # Update sliders for grades and number of students
     grade = st.sidebar.slider("Select Grade:", min_value=5, max_value=9, step=1, value=5)
-    num_of_students = st.sidebar.slider("Number of Students:", options=[10, 20, 30, 40], value=10)
+    num_of_students = st.sidebar.slider("Number of Students:", min_value=10, max_value=40, step=10, value=10)
 
     submitted = st.button("Submit")
 
@@ -62,3 +62,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
